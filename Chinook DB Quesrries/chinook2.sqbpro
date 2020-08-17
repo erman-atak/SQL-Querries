@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/John/Desktop/Calrusway/SQL/chinook.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="3528"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,6:mainalbums"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="albums" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="61"/><column index="2" value="300"/><column index="3" value="59"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">SELECT *
+FROM albums
+inner JOIN artists
+on albums.ArtistId = artists.ArtistId
+WHERE Name = 'Metallica';</sql><sql name="SQL 3">SELECT tracks.Name, artists.Name
+FROM tracks
+INNER JOIN albums
+ON tracks.AlbumId=albums.AlbumId
+INNER JOIN artists
+on albums.AlbumId = artists.ArtistId
+WHERE tracks.Name = 'Problem Child';</sql><sql name="SQL 4">SELECT *
+FROM invoice_items
+
+
+SELECT TrackId
+FROM tracks
+INNER JOIN albums
+on tracks.AlbumId=albums.AlbumId
+INNER JOIN atists
+on albums.ArtistId=artists.ArtistId
+WHERE artists.Name = 'Metallica';</sql><sql name="SQL 5">SELECT invoices.BillingCountry,sum(invoice_items.Quantity) as Total_Quantity
+from invoice_items
+inner join invoices
+on invoice_items.InvoiceId=invoices.InvoiceId
+where TrackId in(
+	select TrackId
+	from tracks
+	inner join albums
+	on tracks.AlbumId=albums.AlbumId
+	inner join artists
+	on albums.ArtistId=artists.ArtistId
+	where artists.name='Metallica')
+group by invoices.BillingCountry
+order by Total_Quantity desc;</sql><current_tab id="3"/></tab_sql></sqlb_project>
