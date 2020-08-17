@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/John/Desktop/Calrusway/SQL/chinook.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached><db schema="company" path="C:\Users\John\Desktop\Calrusway\SQL\company.db"/></attached><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="3528"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/><expanded_item id="4" parent="1"/></tab_structure><tab_browse><current_table name="4,6:mainalbums"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="albums" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="61"/><column index="2" value="300"/><column index="3" value="59"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">-- SELECT Composer, count(TrackId) AS no_of_tracks
+-- FROM tracks
+-- GROUP BY Composer;
+
+SELECT Composer, count(*) AS no_of_tracks
+FROM tracks
+WHERE Composer is NOT NULL --it is used to get rid of from Null values.
+GROUP BY Composer
+-- HAVING no_of_tracks &gt; 20
+ORDER BY no_of_tracks DESC
+LIMIT 10;
+
+-- IS NULL
+-- IS NOT NULL 
+-- These two operators are used only for NULL values.</sql><sql name="SQL 3">SELECT Country, City, count(*) AS No_of_Customers
+FROM customers
+GROUP BY Country, City
+-- HAVING No_of_Customers &gt; 1
+ORDER BY No_of_Customers DESC;
+
+</sql><sql name="SQL 4">SELECT Name, AlbumId, MAX(Milliseconds) AS Duration
+FROM tracks
+GROUP BY AlbumId, Name
+ORDER BY Duration DESC;</sql><sql name="SQL 5">SELECT BillingCountry, SUM(Total) AS Total_Amount
+FROM invoices
+GROUP BY BillingCountry
+HAVING Total_Amount &gt; 100
+ORDER BY Total_Amount DESC;</sql><current_tab id="0"/></tab_sql></sqlb_project>

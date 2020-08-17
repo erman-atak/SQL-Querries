@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/John/Desktop/Calrusway/SQL/chinook.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="3528"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,6:mainalbums"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">SELECT 5.0 / 2;</sql><sql name="SQL 2">SELECT Total, Total * 1.8 FROM invoices;</sql><sql name="SQL 3">--SELECT printf('%.2f', AVG(Milliseconds)) FROM tracks
+
+SELECT Round(AVG(Milliseconds), 2) FROM tracks
+</sql><sql name="SQL 4">-- SELECT tracks.Name, genres.Name
+-- FROM tracks
+-- INNER JOIN genres
+-- ON tracks.GenreId = genres.GenreId
+SELECT t.Name AS Track_Name, g.Name AS Genre_Name
+FROM tracks t
+JOIN genres g
+ON t.GenreId = g.GenreId
+</sql><sql name="SQL 5">SELECT i.InvoiceId, c.FirstName || &quot; &quot; || c.LastName AS Name
+FROM invoices i
+JOIN customers c ON i.CustomerId = c.CustomerId</sql><current_tab id="4"/></tab_sql></sqlb_project>
